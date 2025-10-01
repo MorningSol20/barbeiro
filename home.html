@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estilo R Barbearia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-neutral-900 text-white font-sans">
+
+  <!-- Navbar -->
+  <header class="bg-neutral-950 shadow-md">
+    <nav class="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+      <h1 class="text-2xl font-bold tracking-wide">Estilo R Barbearia</h1>
+      <ul class="flex space-x-6">
+        <li><a href="#inicio" class="hover:text-red-500">Início</a></li>
+        <li><a href="#servicos" class="hover:text-red-500">Serviços</a></li>
+        <li><a href="#sobre" class="hover:text-red-500">Sobre</a></li>
+        <li><a href="#contato" class="hover:text-red-500">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="grid grid-cols-1 md:grid-cols-2 min-h-screen">
+
+    <!-- Left 50% -->
+    <div class="flex flex-col justify-center items-center text-center px-10">
+      <h2 class="text-5xl font-extrabold mb-4 text-red-500">Estilo R Barbearia</h2>
+      <p class="text-xl font-light mb-2">Profissional: <span class="font-semibold">Rodrigo</span></p>
+      <p class="text-lg mb-6">O corte que valoriza o seu estilo ✂️</p>
+      <a href="#contato" class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3 rounded-lg shadow-md">
+        Agende seu horário
+      </a>
+    </div>
+
+    <!-- Right 50% -->
+    <div class="flex justify-center items-center">
+      <img src="./img/barbeiro.jpg" alt="Foto da Barbearia" class="rounded-2xl shadow-2xl max-h-[500px]">
+    </div>
+  </section>
+  <!-- Section Carrossel -->
+  <section id="galeria" class="bg-neutral-800 py-16">
+    <div class="max-w-6xl mx-auto text-center mb-8">
+      <h3 class="text-3xl font-bold text-red-500 mb-4">Nossa Barbearia</h3>
+      <p class="text-lg text-gray-300">Confira um pouco a qualidade do nosso serviço</p>
+    </div>
+
+    <!-- Carrossel Container -->
+    <div class="relative max-w-4xl mx-auto overflow-hidden rounded-2xl shadow-lg">
+      <div id="carousel" class="flex transition-transform duration-500">
+        <!-- Foto 1 -->
+        <div class="min-w-full">
+          <img src="./img/foto1.jpg" alt="Barbearia Foto 1" class="w-full h-[400px] object-cover">
+        </div>
+        <!-- Foto 2 -->
+        <div class="min-w-full">
+          <img src="./img/foto2.jpg" alt="Barbearia Foto 2" class="w-full h-[400px] object-cover">
+        </div>
+        <!-- Foto 3 -->
+        <div class="min-w-full">
+          <img src="./img/foto3.jpg" alt="Barbearia Foto 3" class="w-full h-[400px] object-cover">
+        </div>
+        <!-- Foto 4 -->
+        <div class="min-w-full">
+          <img src="./img/foto4.jpg" alt="Barbearia Foto 4" class="w-full h-[400px] object-cover">
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <button onclick="prevSlide()"
+        class="absolute left-3 top-1/2 -translate-y-1/2 bg-red-500 hover:bg-red-600 text-white p-3 rounded-full shadow-lg">
+        ‹
+      </button>
+      <button onclick="nextSlide()"
+        class="absolute right-3 top-1/2 -translate-y-1/2 bg-red-500 hover:bg-red-600 text-white p-3 rounded-full shadow-lg">
+        ›
+      </button>
+    </div>
+  </section>
+  <section id="mapa">
+    <h2>Localização: Av. Dr. Esmeraldo Soares Tarquínio de Campos Filho, 823 - Parque das Bandeiras, São Vicente - SP,
+      11346-000</h2>
+    <div id="map" style="width: 100%; height: auto; margin: 20px 0 20px 0;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227.82792829952248!2d-46.48143665099186!3d-23.987058624632333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce18d442ab9f41%3A0x5a459311fcec5f85!2sAv.%20Dr.%20Esmeraldo%20Soares%20Tarqu%C3%ADnio%20de%20Campos%20Filho%2C%2010%20-%20Parque%20das%20Bandeiras%2C%20S%C3%A3o%20Vicente%20-%20SP%2C%2011346-000!5e0!3m2!1spt-BR!2sbr!4v1759280706751!5m2!1spt-BR!2sbr" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  </section>
+
+  <script>
+    let currentIndex = 0;
+    const carousel = document.getElementById('carousel');
+    const totalSlides = carousel.children.length;
+
+    function showSlide(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+      carousel.style.transform = `translateX(-${index * 100}%)`;
+      currentIndex = index;
+    }
+
+    function prevSlide() {
+      showSlide(currentIndex - 1);
+    }
+
+    function nextSlide() {
+      showSlide(currentIndex + 1);
+    }
+
+    // Auto-slide a cada 5 segundos
+    setInterval(() => {
+      nextSlide();
+    }, 5000);
+  </script>
+</body>
+
+</html>
